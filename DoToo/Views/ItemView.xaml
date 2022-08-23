@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="DoToo.Views.ItemView"
+             Title="New todo item">
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Save" Command="{Binding Save}"/>
+    </ContentPage.ToolbarItems>
+
+    <StackLayout Padding="14">
+        <Label Text="Title" />
+        <Entry Text="{Binding Item.Title}"/>
+        <Label Text="Description"/>
+        <Editor Text="{Binding Item.Description}"/>
+        <Label Text="Due" />
+        <DatePicker Date="{Binding Item.Due}"/>
+
+        <Label Text="Category"/>
+        <Picker Title="Category" SelectedItem="{Binding Item.Category}" >
+            <Picker.ItemsSource>
+                <x:Array Type="{x:Type x:String}">
+                    <x:String>Personal</x:String>
+                    <x:String>School</x:String>
+                    <x:String>Home</x:String>
+                </x:Array>
+            </Picker.ItemsSource>
+        </Picker>
+        
+            <StackLayout Orientation="Horizontal">
+            <Switch IsToggled="{Binding Item.Completed}"/>
+            <Label Text="Completed" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
